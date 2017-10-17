@@ -4,9 +4,9 @@
 #
 Name     : vinagre
 Version  : 3.22.0
-Release  : 2
-URL      : http://ftp.gnome.org/pub/gnome/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
-Source0  : http://ftp.gnome.org/pub/gnome/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
+Release  : 3
+URL      : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
+Source0  : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
@@ -74,7 +74,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1493915306
+export SOURCE_DATE_EPOCH=1508274510
 %configure --disable-static --with-ssh
 make V=1  %{?_smp_mflags}
 
@@ -86,7 +86,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1493915306
+export SOURCE_DATE_EPOCH=1508274510
 rm -rf %{buildroot}
 %make_install
 %find_lang vinagre
