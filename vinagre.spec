@@ -4,21 +4,21 @@
 #
 Name     : vinagre
 Version  : 3.22.0
-Release  : 6
+Release  : 7
 URL      : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Source0  : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
-Requires: vinagre-bin
-Requires: vinagre-data
-Requires: vinagre-license
-Requires: vinagre-locales
-Requires: vinagre-man
+Requires: vinagre-bin = %{version}-%{release}
+Requires: vinagre-data = %{version}-%{release}
+Requires: vinagre-license = %{version}-%{release}
+Requires: vinagre-locales = %{version}-%{release}
+Requires: vinagre-man = %{version}-%{release}
 BuildRequires : appstream-glib
+BuildRequires : buildreq-gnome
 BuildRequires : gettext
 BuildRequires : intltool
-BuildRequires : itstool
 BuildRequires : perl(XML::Parser)
 BuildRequires : pkgconfig(gtk+-3.0)
 BuildRequires : pkgconfig(gtk-vnc-2.0)
@@ -38,9 +38,9 @@ https://wiki.gnome.org/Apps/Vinagre
 %package bin
 Summary: bin components for the vinagre package.
 Group: Binaries
-Requires: vinagre-data
-Requires: vinagre-license
-Requires: vinagre-man
+Requires: vinagre-data = %{version}-%{release}
+Requires: vinagre-license = %{version}-%{release}
+Requires: vinagre-man = %{version}-%{release}
 
 %description bin
 bin components for the vinagre package.
@@ -57,7 +57,7 @@ data components for the vinagre package.
 %package doc
 Summary: doc components for the vinagre package.
 Group: Documentation
-Requires: vinagre-man
+Requires: vinagre-man = %{version}-%{release}
 
 %description doc
 doc components for the vinagre package.
@@ -95,7 +95,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1531408748
+export SOURCE_DATE_EPOCH=1543349259
 %configure --disable-static --with-ssh
 make  %{?_smp_mflags}
 
@@ -107,10 +107,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1531408748
+export SOURCE_DATE_EPOCH=1543349259
 rm -rf %{buildroot}
-mkdir -p %{buildroot}/usr/share/doc/vinagre
-cp COPYING %{buildroot}/usr/share/doc/vinagre/COPYING
+mkdir -p %{buildroot}/usr/share/package-licenses/vinagre
+cp COPYING %{buildroot}/usr/share/package-licenses/vinagre/COPYING
 %make_install
 %find_lang vinagre
 
@@ -144,7 +144,7 @@ cp COPYING %{buildroot}/usr/share/doc/vinagre/COPYING
 /usr/share/icons/hicolor/48x48/status/view-minimize.png
 /usr/share/icons/hicolor/scalable/mimetypes/application-x-remote-connection.svg
 /usr/share/icons/hicolor/scalable/mimetypes/application-x-vnc.svg
-/usr/share/mime/packages/vinagre-mime.xml
+/usr/share/mime-packages/vinagre-mime.xml
 /usr/share/vinagre/vinagre-ui.xml
 /usr/share/vinagre/vinagre.ui
 
@@ -373,11 +373,11 @@ cp COPYING %{buildroot}/usr/share/doc/vinagre/COPYING
 /usr/share/help/zh_CN/vinagre/view-only.page
 
 %files license
-%defattr(-,root,root,-)
-/usr/share/doc/vinagre/COPYING
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/vinagre/COPYING
 
 %files man
-%defattr(-,root,root,-)
+%defattr(0644,root,root,0755)
 /usr/share/man/man1/vinagre.1
 
 %files locales -f vinagre.lang
