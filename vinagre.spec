@@ -4,10 +4,10 @@
 #
 Name     : vinagre
 Version  : 3.22.0
-Release  : 7
+Release  : 8
 URL      : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Source0  : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
-Summary  : No detailed summary available
+Summary  : A VNC Client for the GNOME desktop
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: vinagre-bin = %{version}-%{release}
@@ -40,7 +40,6 @@ Summary: bin components for the vinagre package.
 Group: Binaries
 Requires: vinagre-data = %{version}-%{release}
 Requires: vinagre-license = %{version}-%{release}
-Requires: vinagre-man = %{version}-%{release}
 
 %description bin
 bin components for the vinagre package.
@@ -95,7 +94,14 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1543349259
+export SOURCE_DATE_EPOCH=1557025796
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static --with-ssh
 make  %{?_smp_mflags}
 
@@ -107,7 +113,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check
 
 %install
-export SOURCE_DATE_EPOCH=1543349259
+export SOURCE_DATE_EPOCH=1557025796
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vinagre
 cp COPYING %{buildroot}/usr/share/package-licenses/vinagre/COPYING
