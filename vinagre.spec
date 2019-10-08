@@ -4,7 +4,7 @@
 #
 Name     : vinagre
 Version  : 3.22.0
-Release  : 8
+Release  : 9
 URL      : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Source0  : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Summary  : A VNC Client for the GNOME desktop
