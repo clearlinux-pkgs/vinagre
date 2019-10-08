@@ -1,2 +1,5 @@
 Configure miss: whether to build for a Windows host
+Configure miss: stropts.h usability
+Configure miss: stropts.h presence
+Configure miss: stropts.h
 Configure miss: bind in -lsocket

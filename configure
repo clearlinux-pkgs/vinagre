@@ -1,1 +1,1 @@
---with-ssh
+--with-ssh   --without-avahi --without-telepathy
