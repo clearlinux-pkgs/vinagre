@@ -4,10 +4,10 @@
 #
 Name     : vinagre
 Version  : 3.22.0
-Release  : 10
+Release  : 11
 URL      : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Source0  : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
-Summary  : A VNC Client for the GNOME desktop
+Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-3.0
 Requires: vinagre-bin = %{version}-%{release}
@@ -88,20 +88,21 @@ man components for the vinagre package.
 
 %prep
 %setup -q -n vinagre-3.22.0
+cd %{_builddir}/vinagre-3.22.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1570559844
+export SOURCE_DATE_EPOCH=1586244616
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
 export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
 %configure --disable-static --with-ssh   --without-avahi --without-telepathy
 make  %{?_smp_mflags}
@@ -114,10 +115,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1570559844
+export SOURCE_DATE_EPOCH=1586244616
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vinagre
-cp COPYING %{buildroot}/usr/share/package-licenses/vinagre/COPYING
+cp %{_builddir}/vinagre-3.22.0/COPYING %{buildroot}/usr/share/package-licenses/vinagre/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 %make_install
 %find_lang vinagre
 
@@ -381,7 +382,7 @@ cp COPYING %{buildroot}/usr/share/package-licenses/vinagre/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/vinagre/COPYING
+/usr/share/package-licenses/vinagre/8624bcdae55baeef00cd11d5dfcfa60f68710a02
 
 %files man
 %defattr(0644,root,root,0755)
