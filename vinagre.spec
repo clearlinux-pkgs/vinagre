@@ -4,7 +4,7 @@
 #
 Name     : vinagre
 Version  : 3.22.0
-Release  : 11
+Release  : 12
 URL      : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Source0  : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Summary  : No detailed summary available
@@ -27,6 +27,7 @@ BuildRequires : pkgconfig(libxml-2.0)
 BuildRequires : pkgconfig(spice-client-gtk-3.0)
 BuildRequires : pkgconfig(vte-2.91)
 BuildRequires : sed
+Patch1: gcc10.patch
 
 %description
 Vinagre
@@ -89,13 +90,14 @@ man components for the vinagre package.
 %prep
 %setup -q -n vinagre-3.22.0
 cd %{_builddir}/vinagre-3.22.0
+%patch1 -p1
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586244616
+export SOURCE_DATE_EPOCH=1589894351
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -115,7 +117,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make VERBOSE=1 V=1 %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1586244616
+export SOURCE_DATE_EPOCH=1589894351
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vinagre
 cp %{_builddir}/vinagre-3.22.0/COPYING %{buildroot}/usr/share/package-licenses/vinagre/8624bcdae55baeef00cd11d5dfcfa60f68710a02
