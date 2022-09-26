@@ -4,7 +4,7 @@
 #
 Name     : vinagre
 Version  : 3.22.0
-Release  : 15
+Release  : 16
 URL      : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Source0  : https://download.gnome.org/sources/vinagre/3.22/vinagre-3.22.0.tar.xz
 Summary  : No detailed summary available
@@ -97,15 +97,15 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1589894351
+export SOURCE_DATE_EPOCH=1664163339
 export GCC_IGNORE_WERROR=1
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
-export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=4 "
-export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=4 "
+export CFLAGS="$CFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FCFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export FFLAGS="$FFLAGS -O3 -ffat-lto-objects -flto=auto "
+export CXXFLAGS="$CXXFLAGS -O3 -ffat-lto-objects -flto=auto "
 %configure --disable-static --with-ssh   --without-avahi --without-telepathy
 make  %{?_smp_mflags}
 
@@ -114,13 +114,13 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make VERBOSE=1 V=1 %{?_smp_mflags} check || :
+make %{?_smp_mflags} check || :
 
 %install
-export SOURCE_DATE_EPOCH=1589894351
+export SOURCE_DATE_EPOCH=1664163339
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/vinagre
-cp %{_builddir}/vinagre-3.22.0/COPYING %{buildroot}/usr/share/package-licenses/vinagre/8624bcdae55baeef00cd11d5dfcfa60f68710a02
+cp %{_builddir}/vinagre-%{version}/COPYING %{buildroot}/usr/share/package-licenses/vinagre/8624bcdae55baeef00cd11d5dfcfa60f68710a02 || :
 %make_install
 %find_lang vinagre
 
